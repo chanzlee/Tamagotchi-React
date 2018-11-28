@@ -1,17 +1,16 @@
 import React from 'react';
-import defaultImg from '../image/default.png';
 import PropType from 'prop-types';
 
-const Screen = () => {
+const Screen = (props) => {
   return (
     <div>
-      <img src={defaultImg}></img>
+      <img src={props.image}></img>
     </div>
   );
 };
 
 Screen.propTypes = {
-  images: PropType.object,
+  image: PropType.string,
 };
 
 export default Screen;
