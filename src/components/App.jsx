@@ -1,5 +1,5 @@
 import React from 'react';
-import bootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import Screen from './Screen';
 import Status from './Status';
 import Tamagotchi from '../models/Tamagotchi';
@@ -12,7 +12,7 @@ import sleep from '../image/sleep.png';
 
 
 function App(){
-  let gutetama = new Tamagotchi("Meguru");
+  let gutetama = new Tamagotchi('Meguru');
   let images = {
     dead: dead,
     play: play,
@@ -20,12 +20,12 @@ function App(){
     food: food,
     poop: poop,
     sleep: sleep,
-  }
+  };
 
   return (
     <div>
       <h2>Welcome to Tamagotchi world!</h2>
-      <Screen />
+      <Screen images = {images}/>
       <Status tamago = {gutetama}/>
     </div>
   );
