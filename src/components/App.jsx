@@ -10,7 +10,10 @@ import food from '../image/food.png';
 import poop from '../image/poop.png';
 import sleep from '../image/sleep.png';
 import tired from '../image/tired.png';
+import title from '../image/title.jpeg';
 import Buttons from  './Buttons';
+import ipadFrame from '../image/ipadFrame.png';
+import $ from '../../node_modules/jquery/dist/jquery';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +36,7 @@ class App extends React.Component {
     this.handlePlay = this.handlePlay.bind(this);
     this.handlePoop = this.handlePoop.bind(this);
     this.handleFood = this.handleFood.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51,9 +55,9 @@ class App extends React.Component {
 
       }
       else {
-        this.setState({gutetama: gutetamaCopy, image: defaultImg});
+        this.setState({gutetama: gutetamaCopy, image: this.state.image});
       }
-    }, 100);
+    }, 1000);
   }
 
   handleSleep () {
@@ -63,6 +67,11 @@ class App extends React.Component {
     
     }
     this.setState({gutetama: gutetamaCopy, image: sleep});
+
+    setTimeout(() => {
+      this.setState({gutetama: gutetamaCopy, image: defaultImg});
+    }, 3000);
+
   }
 
   handlePlay () {
@@ -71,6 +80,9 @@ class App extends React.Component {
       gutetamaCopy.play += 5;
     }
     this.setState({gutetama: gutetamaCopy, image: play});
+    setTimeout(() => {
+      this.setState({gutetama: gutetamaCopy, image: defaultImg});
+    }, 3000);
   }
 
   handlePoop () {
@@ -79,6 +91,9 @@ class App extends React.Component {
       gutetamaCopy.poop += 5;
     }
     this.setState({gutetama: gutetamaCopy, image: poop});
+    setTimeout(() => {
+      this.setState({gutetama: gutetamaCopy, image: defaultImg});
+    }, 3000);
   }
 
   handleFood () {
@@ -87,12 +102,36 @@ class App extends React.Component {
       gutetamaCopy.food += 5;
     }
     this.setState({gutetama: gutetamaCopy, image: food});
+    setTimeout(() => {
+      this.setState({gutetama: gutetamaCopy, image: defaultImg});
+    }, 3000);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let gutetamaCopy = this.state.gutetama;
+    gutetamaCopy.name = $("#newName").val();
+    this.setState({gutetama: gutetamaCopy, image: this.state.image});
   }
 
   render() {
+    if (this.state.gutetama.life === false)
+      $("#newNameForm").removeClass();
+      $("#newNameForm").addClass("d-none");
     return (
-      <div>
-        <h2>Welcome to Tamagotchi world!</h2>
+      <div id="appDiv">
+        <style jsx>{`
+           #appDiv {
+            height: 98vh;
+            background-image: url(${ipadFrame});
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          #newName {
+            width: 200px;
+          }
+        `}</style>
+        <img src={title} className="mx-auto d-block" style={{ paddingTop: "90px", borderRadius: "30px",width: "630px", height:"300px"}} alt="title image"/>
         <Screen image={this.state.image}/>
         <Status tamago={this.state.gutetama} />
         <Buttons 
@@ -101,6 +140,10 @@ class App extends React.Component {
           onPoop={this.handlePoop}
           onFood={this.handleFood}
           life={this.state.gutetama.life} />
+        <form id="newNameForm" onSubmit={this.handleSubmit} className="mt-3 d-flex flex-row justify-content-center">
+          <input id="newName" type="text" className="form-control mr-3" placeholder="New name"></input>
+          <button type="submit" className="btn btn-light">Update name</button>
+        </form>
       </div>
     );
   }

@@ -17,23 +17,29 @@ const Status = (props) => {
   };
 
   return (
-    <div className="container">
-      <p>{props.tamago.name}</p>
-
-      <p>{props.tamago.sleep}</p>
-      <div className="progress">
+    <div id="progressBars" className="mx-auto">
+      <style jsx>{`
+        #progressBars {
+            width: 600px;
+        }
+      `}</style>
+      <div className="text-center">
+        <h3 className="font-weight-bold">{props.tamago.name}</h3>
+      </div>
+      <div className="mb-2">Sleep: {props.tamago.sleep}</div>
+      <div className="progress mb-2">
         <div className="progress-bar" role="progressbar"  style={sleep} aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <p>{props.tamago.play}</p>
-      <div className="progress">
+      <div className="mb-2">Play: {props.tamago.play}</div>
+      <div className="progress mb-2">
         <div className="progress-bar" role="progressbar"  style={play} aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <p>{props.tamago.poop}</p>
-      <div className="progress">
+      <div className="mb-2">Poop: {props.tamago.poop}</div>
+      <div className="progress mb-2">
         <div className="progress-bar" role="progressbar"  style={poop} aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-      <p>{props.tamago.food}</p>
-      <div className="progress">
+      <div className="mb-2">Food: {props.tamago.food}</div>
+      <div className="progress mb-2">
         <div className="progress-bar" role="progressbar"  style={food} aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>

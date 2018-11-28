@@ -3,18 +3,19 @@ import $ from '../../node_modules/jquery/dist/jquery';
 import PropType from 'prop-types';
 
 const Buttons = (props) => {
-  if (props.life === false)
+  if (props.life === false) {
     $('#buttons').hide();
+  }
 
   return (
-      <div>
-    <div id="buttons">
-      <button onClick={props.onSleep} className="btn btn-success">Sleep</button>
-      <button onClick={props.onPlay} className="btn btn-success">Play</button>
-      <button onClick={props.onPoop} className="btn btn-success">Poop</button>
-      <button onClick={props.onFood} className="btn btn-success">Food</button>
-    </div>
-        {(!props.life)? <h1>Mel is Ded</h1> : null}
+    <div className="row justify-content-center mt-4">
+      <div id="buttons">
+        <button onClick={props.onSleep} className="btn btn-light mr-3">Sleep</button>
+        <button onClick={props.onPlay} className="btn btn-light mr-3">Play</button>
+        <button onClick={props.onPoop} className="btn btn-light mr-3">Poop</button>
+        <button onClick={props.onFood} className="btn btn-light mr-3">Food</button>
+      </div>
+      {(!props.life) ? <div className="bg-warning text-white mt-2"><h1>: Mel is Dead :</h1></div> : null}
     </div>
   );
 };
@@ -26,5 +27,5 @@ Buttons.propTypes = {
   onFood: PropType.func,
   life: PropType.bool
 };
- 
+
 export default Buttons;
