@@ -15,7 +15,7 @@ const Buttons = (props) => {
         <button onClick={props.onPoop} className="btn btn-light mr-3">Poop</button>
         <button onClick={props.onFood} className="btn btn-light mr-3">Food</button>
       </div>
-      {(!props.life) ? <div className="bg-warning text-white mt-2"><h1>: Mel is Dead :</h1></div> : null}
+      {(!props.life) ? <div className="bg-warning text-white mt-2"><h1>: {props.name} is Dead :</h1></div> : null}
     </div>
   );
 };
@@ -25,7 +25,8 @@ Buttons.propTypes = {
   onPlay: PropType.func,
   onPoop: PropType.func,
   onFood: PropType.func,
-  life: PropType.bool
+  life: PropType.bool,
+  name: PropType.string,
 };
 
 export default Buttons;
