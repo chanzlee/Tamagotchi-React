@@ -4,7 +4,7 @@ import PropType from 'prop-types';
 const Screen = (props) => {
   return (
     <div>
-      <img className="mx-auto d-block" style={{ marginTop: '50px', width: '400px', height: '340px'}} src={props.image}></img>
+      <img className="mx-auto d-block" style={{ marginTop: '30px', width: '400px', height: '340px'}} src={props.image}></img>
     </div>
   );
 };

@@ -9,12 +9,14 @@ const Buttons = (props) => {
 
   return (
     <div className="row justify-content-center mt-4">
+      {(!props.life)? null :
       <div id="buttons">
-        <button onClick={props.onSleep} className="btn btn-light mr-3">Sleep</button>
-        <button onClick={props.onPlay} className="btn btn-light mr-3">Play</button>
-        <button onClick={props.onPoop} className="btn btn-light mr-3">Poop</button>
-        <button onClick={props.onFood} className="btn btn-light mr-3">Food</button>
-      </div>
+          <button onClick={props.onSleep} className="btn btn-light mr-3">Sleep</button>
+          <button onClick={props.onPlay} className="btn btn-light mr-3">Play</button>
+          <button onClick={props.onPoop} className="btn btn-light mr-3">Poop</button>
+          <button onClick={props.onFood} className="btn btn-light mr-3">Food</button>
+        </div>
+      }
       {(!props.life) ? <div className="bg-warning text-white mt-2"><h1>: {props.name} is Dead :</h1></div> : null}
     </div>
   );

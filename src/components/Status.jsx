@@ -1,6 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types';
 import Tamagotchi from '../models/Tamagotchi';
+import { Link } from 'react-router-dom';
 
 const Status = (props) => {
   let sleep = {
@@ -23,7 +24,8 @@ const Status = (props) => {
             width: 600px;
         }
       `}</style>
-      <div className="text-center">
+      <div className='text-center'><Link to="/" className="btn btn-secondary btn-sm">Back to main</Link></div>
+      <div className="text-center mt-1">
         <h3 className="font-weight-bold">{props.tamago.name}</h3>
       </div>
       <div className="mb-2">Sleep: {props.tamago.sleep}</div>

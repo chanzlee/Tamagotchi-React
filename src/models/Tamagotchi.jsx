@@ -1,5 +1,8 @@
+import { v4 } from 'uuid';
+
 class Tamagotchi {
   constructor(name) {
+    this.ID = v4();
     this.name = name;
     this.food = 50;
     this.sleep = 50;
